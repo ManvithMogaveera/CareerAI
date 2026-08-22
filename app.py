@@ -33,12 +33,16 @@ from catboost import CatBoostClassifier
 import gdown
 
 MODEL_PATH = "careerai_models.pkl"
-FILE_ID = "https://drive.google.com/file/d/1dSrwlEdIKfyABuT3UN0nz9Ijoq5EPbDF/view?usp=sharing"
+
+FILE_ID = "1dSrwlEdIKfyABuT3UN0nz9Ijoq5EPbDF"
 
 if not os.path.exists(MODEL_PATH):
-    url = f"https://drive.google.com/uc?id={FILE_ID}"
-    gdown.download(url, MODEL_PATH, quiet=False)
-
+    with st.spinner("📦 Downloading CareerAI model..."):
+        gdown.download(
+            id=FILE_ID,
+            output=MODEL_PATH,
+            quiet=False
+        )
 st.set_page_config(
     page_title="CareerAI",
     page_icon="🚀",
